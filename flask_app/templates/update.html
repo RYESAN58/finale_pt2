@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta http-equiv="X-UA-Compatible" content="ie=edge">
+<meta name="Description" content="Enter your description here"/>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/5.1.0/css/bootstrap.min.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+<link rel="stylesheet" href="assets/css/style.css">
+<title>Title</title>
+</head>
+<body>
+    <a href="http://127.0.0.1:5000/dashboard/{{x}}">dashboard</a>
+    <a href="http://127.0.0.1:5000/">Logout</a>
+    <br>
+    {{name}}
+    <h1>Edit car!</h1>
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p style="color: red; font-weight: bold;">{{message}}</p>
+            {% endfor %}
+        {% endif %}
+{% endwith %}
+{% for i in update%}
+    <form action="/update_rec" method="POST">
+        <div>
+            <span class="input-group-text" >price!</span>
+            <select class="form-select" aria-label="Default select example" name = 'price'>
+                <option selected>Open this select menu</option>
+                {% for i in range(0, 55000, 2500 ) %}
+                    <option selected>{{i}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" id="addon-wrapping">model</span>
+            <input type="text" class="form-control" name="model" value="{{i.model}}">
+        </div>
+        <br>
+        <div class="input-group flex-nowrap">
+            <span class="input-group-text" >make!</span>
+            <input type="text" class="form-control" name= 'make' value="{{i.make}}">
+        </div>
+        <br>
+        <div>
+            <span class="input-group-text" >Year!</span>
+            <select class="form-select" aria-label="Default select example" name = 'year'>
+                <option selected>Open this select menu</option>
+                {% for i in range(1950, 2023) %}
+                    <option selected>{{i}}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <br>
+        <div class="input-group input-group-sm mb-3">
+            <span class="input-group-text" >description</span>
+            <input class="form-control" name="description" value="{{i.description}}">
+        </div>
+        <div>
+            <span></span>
+        </div>
+        </div>
+        <input type="hidden" value="{{y}}" name="id">
+        <button type="submit">update</button>
+    </form>
+
+    {% endfor %}
+
+
+    {{y}}{{y}}{{y}}{{y}}{{y}}{{y}}
+</body>
+</html>
