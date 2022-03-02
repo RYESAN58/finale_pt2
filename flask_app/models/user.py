@@ -88,4 +88,6 @@ class User:
         if user['password'] != user['password2']:
             flash('Both passwords must match', 'create')
             is_valid = False
+        if len(user['password']) < 8:
+            flash('password must be 8 characters')
         return is_valid

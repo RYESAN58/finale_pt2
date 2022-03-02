@@ -51,9 +51,9 @@ def logger():
     
 
     if not bcrypt.check_password_hash(user_in_db.password, request.form['password']):
-        flash("Invalid Email/Password", 'login')
+        flash("Must Enter Password", 'login')
         return redirect('/')
-    if len(request.form['password']) < 0:
+    if len(request.form['password']) < 1:
         flash('must enter passoword')
         return redirect('/')
     session['user'] = user_in_db.id
@@ -61,7 +61,7 @@ def logger():
     x = session['user']
     return redirect(f'/dashboard/{x}')
 
-
+#############################################################################
 
 @app.route('/dashboard/<int:num>/')
 def home(num):
